@@ -1,10 +1,5 @@
 const url = 'http://swapi.dev/api/planets';
-const btn = document.createElement("button");
-btn.textContent="Press me!";
-document.body.appendChild(btn);
-btn.addEventListener("click", asyncData);
-
-
+const btn = document.createElement("button")
 function fetchData() {
     fetch(url).then(function (rep) {
         return rep.json();
