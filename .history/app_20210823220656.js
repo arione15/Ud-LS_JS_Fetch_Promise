@@ -14,7 +14,7 @@ btn.addEventListener("click", function () {
 // Créer la fonction fetchAll qui utilise Promise
 function fetchAll(url, planets) {
     return new Promise(function (resolve, reject) {
-        return fetch(url).then(function (rep) { //h. (NON ??) car il y a l'url de l'appli mais il y a aussi les url des # pages
+        return fetch(url).then(function (rep) { //h. car il y a l'url de l'appli mais il y a aussi les url des # pages
             return rep.json();
         }).then(function (data) {
             planets = data.results.map(function (item) {

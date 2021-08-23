@@ -6,15 +6,14 @@ btn.addEventListener("click", function () {
     //fetchData('http://swapi.dev/api/planets');
     //asyncData('http://swapi.dev/api/planets');
     fetchAll('http://swapi.dev/api/planets', []).then(function (planets) {
-        //console.log(planets)
-        outputPlanets(planets);
+        console.log(planets)
     });
 });
 
 // Créer la fonction fetchAll qui utilise Promise
 function fetchAll(url, planets) {
     return new Promise(function (resolve, reject) {
-        return fetch(url).then(function (rep) { //h. (NON ??) car il y a l'url de l'appli mais il y a aussi les url des # pages
+        return fetch(url).then(function (rep) { //h. car il y a l'url de l'appli mais il y a aussi les url des # pages
             return rep.json();
         }).then(function (data) {
             planets = data.results.map(function (item) {
@@ -22,10 +21,12 @@ function fetchAll(url, planets) {
                     Nom: item.name,
                     Films: item.films
                 };
+
             })
             resolve(planets);
         })
     })
+});
 }
 
 // Création d'une div pour afficher les données de sortie qu'on veut : 
