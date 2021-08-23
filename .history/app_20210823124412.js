@@ -21,8 +21,8 @@ function fetchData(url) {
         if(data.next !== null){ //ou bien if(data.next)
             const btnNext = document.createElement("button");
             output.appendChild(btnNext);
-        // !!!! PORQOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next            btnNext.textContent="Next";
+            *// !!!! PORQOI ? le mettre dans document.body crée à chaque fois un autre bouton Next
+            btnNext.textContent="Next";
             btnNext.addEventListener("click", function(){
                 fetchData(data.next);
             })

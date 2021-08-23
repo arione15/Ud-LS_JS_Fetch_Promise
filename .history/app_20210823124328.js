@@ -20,9 +20,8 @@ function fetchData(url) {
         output.textContent=`${data.count} résultats trouvés.`;
         if(data.next !== null){ //ou bien if(data.next)
             const btnNext = document.createElement("button");
-            output.appendChild(btnNext);
-        // !!!! PORQOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next            btnNext.textContent="Next";
+            output.appendChild(btnNext);// !!!! PORQOI ? le mettre dans document.body crée à chaque fois un autre bouton Next
+            btnNext.textContent="Next";
             btnNext.addEventListener("click", function(){
                 fetchData(data.next);
             })
@@ -38,9 +37,7 @@ async function asyncData(url) {
     output.textContent=`${data.count} résultats trouvés.`;
     if(data.next){
         const btnNext = document.createElement("button");
-        document.body.appendChild(btnNext); 
-        // !!!! PORQOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next
+        document.body.appendChild(btnNext); // le mettre dans document.body crée à chaque fois un autre bouton Next
         btnNext.textContent="Next";
         btnNext.addEventListener("click", function(){
             asyncData(data.next);

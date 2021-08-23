@@ -3,8 +3,7 @@ const btn = document.createElement("button");
 btn.textContent="Press me!";
 document.body.appendChild(btn);
 btn.addEventListener("click", function(){
-    //fetchData('http://swapi.dev/api/planets');
-    asyncData('http://swapi.dev/api/planets');
+    fetchData('http://swapi.dev/api/planets');
 });
 
 // Création d'une div pour afficher les données de sortie qu'on veut : 
@@ -21,8 +20,7 @@ function fetchData(url) {
         if(data.next !== null){ //ou bien if(data.next)
             const btnNext = document.createElement("button");
             output.appendChild(btnNext);
-        // !!!! PORQOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next            btnNext.textContent="Next";
+            btnNext.textContent="Next";
             btnNext.addEventListener("click", function(){
                 fetchData(data.next);
             })
@@ -32,19 +30,19 @@ function fetchData(url) {
 }
 
 // mettre le async/await dans une fonction :
-async function asyncData(url) {
+async function asyncData() {
     let reponse = await fetch(url);
     let data = await reponse.json();
     output.textContent=`${data.count} résultats trouvés.`;
     if(data.next){
-        const btnNext = document.createElement("button");
-        document.body.appendChild(btnNext); 
-        // !!!! PORQOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next
-        btnNext.textContent="Next";
-        btnNext.addEventListener("click", function(){
-            asyncData(data.next);
+        const btn2 = document.createElement("button");
+        document.body.appendChild(btn2);
+        btn2.textContent=`Next`;
+        btn2.addEventListener("click", function(){
+            asyncData
+;
         })
+
     }
     console.log(data);
 }

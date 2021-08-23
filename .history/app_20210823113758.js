@@ -1,11 +1,10 @@
+const url = 'http://swapi.dev/api/planets';
+
 // Création d'un bouton pour récupérer les données
 const btn = document.createElement("button");
 btn.textContent="Press me!";
 document.body.appendChild(btn);
-btn.addEventListener("click", function(){
-    //fetchData('http://swapi.dev/api/planets');
-    asyncData('http://swapi.dev/api/planets');
-});
+btn.addEventListener("click", fetchData);
 
 // Création d'une div pour afficher les données de sortie qu'on veut : 
 // ici on peut utiliser html et css mais on veut n'utiliser que JS.
@@ -13,38 +12,36 @@ const output = document.createElement("div");
 document.body.appendChild(output);
 
 // mettre le fetch/then dans une fonction :
-function fetchData(url) {
+function fetchData() {
     fetch(url).then(function (rep) {
         return rep.json();
     }).then(function(data){
         output.textContent=`${data.count} résultats trouvés.`;
-        if(data.next !== null){ //ou bien if(data.next)
+        if(data.next !== null){
             const btnNext = document.createElement("button");
             output.appendChild(btnNext);
-        // !!!! PORQOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next            btnNext.textContent="Next";
-            btnNext.addEventListener("click", function(){
-                fetchData(data.next);
-            })
+            btnNext.textContent="Next";
+            bt
         }
         console.log(data);
     })
 }
 
 // mettre le async/await dans une fonction :
-async function asyncData(url) {
+async function asyncData() {
     let reponse = await fetch(url);
     let data = await reponse.json();
     output.textContent=`${data.count} résultats trouvés.`;
     if(data.next){
-        const btnNext = document.createElement("button");
-        document.body.appendChild(btnNext); 
-        // !!!! PORQOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next
-        btnNext.textContent="Next";
-        btnNext.addEventListener("click", function(){
-            asyncData(data.next);
+        const btn2 = document.createElement("button");
+        document.body.appendChild(btn2);
+        btn2.textContent=`Next`;
+        btn2.addEventListener("click", function(){
+            //let resp = await fetch(data.next);
+            //let donnees = await resp.json();
+            output.textContent=`${data} résultats trouvés.`;
         })
+
     }
     console.log(data);
 }
