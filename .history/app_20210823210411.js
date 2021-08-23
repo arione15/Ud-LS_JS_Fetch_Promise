@@ -35,7 +35,7 @@ function outputPlanets(data){
 }
 
 // Créer la fonction fetchAll qui utilise Promise
-function fetchAll(url){
+function fetchAll(){
     return new Promise(function(resolve, reject){
         setTimeout(function(){
             resolve("foo");

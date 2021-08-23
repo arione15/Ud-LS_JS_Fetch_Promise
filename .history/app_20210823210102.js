@@ -5,9 +5,7 @@ document.body.appendChild(btn);
 btn.addEventListener("click", function(){
     //fetchData('http://swapi.dev/api/planets');
     //asyncData('http://swapi.dev/api/planets');
-    fetchAll('http://swapi.dev/api/planets').then(function(planets){
-        console.log(planets)
-    });
+    fetchAll('http://swapi.dev/api/planets');
 });
 
 // Création d'une div pour afficher les données de sortie qu'on veut : 
@@ -35,11 +33,11 @@ function outputPlanets(data){
 }
 
 // Créer la fonction fetchAll qui utilise Promise
-function fetchAll(url){
+function fetchAll(){
     return new Promise(function(resolve, reject){
         setTimeout(function(){
-            resolve("foo");
-        }, 2000);
+            resolve("foo")
+        })
     })
 }
 
