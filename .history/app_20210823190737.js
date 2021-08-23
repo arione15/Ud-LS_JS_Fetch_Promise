@@ -3,7 +3,7 @@ const btn = document.createElement("button");
 btn.textContent="Press me!";
 document.body.appendChild(btn);
 btn.addEventListener("click", function(){
-    fetchData('http://swapi.dev/api/planets');
+    //fetchData('http://swapi.dev/api/planets');
     //asyncData('http://swapi.dev/api/planets');
 });
 

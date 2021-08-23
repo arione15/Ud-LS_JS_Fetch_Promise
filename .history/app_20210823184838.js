@@ -13,22 +13,20 @@ const output = document.createElement("div");
 document.body.appendChild(output);
 
 // Créer une fonction pour afficher les données en parcourant data
-function outputPlanets(data){
-    data.forEach(function(element) {
-        console.log(element);
-        const maDiv = document.createElement("div");
-        document.body.appendChild(maDiv);
-        maDiv.textContent=element.Nom;
-
-        const monUl = document.createElement("ul");
-        maDiv.appendChild(monUl);
-
-        for(film of element.Films){
-            let monLi = document.createElement("li");
-            monUl.appendChild(monLi);
-            monLi.textContent=film;
+function outputPlanets(data) {
+    data.forEach(function (item) {
+        console.log(item);
+        const div = document.createElement('div');
+        div.textContent = item.name;
+        const ul = document.createElement('ul');
+        for (let x = 0; x < item.films.length; x++) {
+            let li = document.createElement('li');
+            li.textContent = item.films[x];
+            ul.appendChild(li);
         }
-    });
+        div.appendChild(ul);
+        output.appendChild(div);
+    })
 }
 
 

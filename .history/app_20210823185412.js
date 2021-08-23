@@ -15,7 +15,7 @@ document.body.appendChild(output);
 // Créer une fonction pour afficher les données en parcourant data
 function outputPlanets(data){
     data.forEach(function(element) {
-        console.log(element);
+        //console.log(element);
         const maDiv = document.createElement("div");
         document.body.appendChild(maDiv);
         maDiv.textContent=element.Nom;
@@ -23,12 +23,18 @@ function outputPlanets(data){
         const monUl = document.createElement("ul");
         maDiv.appendChild(monUl);
 
-        for(film of element.Films){
+        element.Films.forEach(function(x){
             let monLi = document.createElement("li");
             monUl.appendChild(monLi);
-            monLi.textContent=film;
-        }
+            monLi.textContent=elemnt.Films[x];
+
+
+        })
+
+
+        
     });
+    
 }
 
 

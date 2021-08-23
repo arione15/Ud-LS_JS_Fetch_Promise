@@ -29,6 +29,7 @@ function outputPlanets(data){
             monLi.textContent=film;
         }
     });
+    
 }
 
 

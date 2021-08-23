@@ -28,7 +28,11 @@ function outputPlanets(data){
             monUl.appendChild(monLi);
             monLi.textContent=film;
         }
+
+
+        
     });
+    
 }
 
 

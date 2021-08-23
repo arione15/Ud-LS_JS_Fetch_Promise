@@ -15,20 +15,18 @@ document.body.appendChild(output);
 // Créer une fonction pour afficher les données en parcourant data
 function outputPlanets(data){
     data.forEach(function(element) {
-        console.log(element);
+        //console.log(element);
         const maDiv = document.createElement("div");
         document.body.appendChild(maDiv);
-        maDiv.textContent=element.Nom;
+        maDiv.textContent=element.name;
 
         const monUl = document.createElement("ul");
-        maDiv.appendChild(monUl);
+        ma
 
-        for(film of element.Films){
-            let monLi = document.createElement("li");
-            monUl.appendChild(monLi);
-            monLi.textContent=film;
-        }
+
+        
     });
+    
 }
 
 

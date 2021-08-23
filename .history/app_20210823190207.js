@@ -26,9 +26,13 @@ function outputPlanets(data){
         for(film of element.Films){
             let monLi = document.createElement("li");
             monUl.appendChild(monLi);
-            monLi.textContent=film;
+            monLi.textContent=Films[film];
         }
+
+
+        
     });
+    
 }
 
 

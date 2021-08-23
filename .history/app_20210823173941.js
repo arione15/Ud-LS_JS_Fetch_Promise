@@ -3,34 +3,14 @@ const btn = document.createElement("button");
 btn.textContent="Press me!";
 document.body.appendChild(btn);
 btn.addEventListener("click", function(){
-    fetchData('http://swapi.dev/api/planets');
-    //asyncData('http://swapi.dev/api/planets');
+    //fetchData('http://swapi.dev/api/planets');
+    asyncData('http://swapi.dev/api/planets');
 });
 
 // Création d'une div pour afficher les données de sortie qu'on veut : 
 // ici on peut utiliser html et css mais on veut n'utiliser que JS.
 const output = document.createElement("div");
 document.body.appendChild(output);
-
-// Créer une fonction pour afficher les données en parcourant data
-function outputPlanets(data){
-    data.forEach(function(element) {
-        console.log(element);
-        const maDiv = document.createElement("div");
-        document.body.appendChild(maDiv);
-        maDiv.textContent=element.Nom;
-
-        const monUl = document.createElement("ul");
-        maDiv.appendChild(monUl);
-
-        for(film of element.Films){
-            let monLi = document.createElement("li");
-            monUl.appendChild(monLi);
-            monLi.textContent=film;
-        }
-    });
-}
-
 
 // mettre le fetch/then dans une fonction :
 function fetchData(url) {
@@ -54,7 +34,7 @@ function fetchData(url) {
             //console.log(item);
             return {Nom: item.name, Films: item.films}
         })
-        outputPlanets(planets);
+        console.log(planets);
     })
 }
 
@@ -77,6 +57,6 @@ async function asyncData(url) {
     const planets = data.results.map(function(item){
         return {Nom: item.name, Films: item.films};
     })
-    outputPlanets(planets);
+    console.log(planets);
 }
 
