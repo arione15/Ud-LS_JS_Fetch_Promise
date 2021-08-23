@@ -22,8 +22,7 @@ function fetchData(url) {
             const btnNext = document.createElement("button");
             output.appendChild(btnNext);
         // !!!! POURQUOI ? le mettre dans document.body crée à chaque
-        // !!!! fois un autre bouton Next            
-            btnNext.textContent="Next";
+        // !!!! fois un autre bouton Next            btnNext.textContent="Next";
             btnNext.addEventListener("click", function(){
                 fetchData(data.next);
             })
@@ -31,8 +30,7 @@ function fetchData(url) {
 
         // Utilisation de map pour extraire des infos du nom des planètes et leurs films
         const planets = data.results.map(function(item){
-            //console.log(item);
-            return {Nom: item.name, Films: item.films}
+
         })
         console.log(planets);
     })
@@ -45,7 +43,7 @@ async function asyncData(url) {
     output.textContent=`${data.count} résultats trouvés.`;
     if(data.next){
         const btnNext = document.createElement("button");
-        output.appendChild(btnNext); 
+        outputdocument.body.appendChild(btnNext); 
         //document.body.appendChild(btnNext); 
         // !!!! POURQUOI ? le mettre dans document.body crée à chaque
         // !!!! fois un autre bouton Next
@@ -54,8 +52,5 @@ async function asyncData(url) {
             asyncData(data.next);
         })
     }
-    const planets = data.results.map(function(item){
-        return {Nom: item.name, Films: item.films};
-    })
-    console.log(planets);
+    console.log(data);
 }

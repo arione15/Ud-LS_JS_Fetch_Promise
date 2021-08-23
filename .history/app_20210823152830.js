@@ -33,6 +33,7 @@ function fetchData(url) {
         const planets = data.results.map(function(item){
             //console.log(item);
             return {Nom: item.name, Films: item.films}
+
         })
         console.log(planets);
     })
@@ -55,7 +56,7 @@ async function asyncData(url) {
         })
     }
     const planets = data.results.map(function(item){
-        return {Nom: item.name, Films: item.films};
+        return {Nom: item.name, Films}
     })
-    console.log(planets);
+    console.log(data);
 }

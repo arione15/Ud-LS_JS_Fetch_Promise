@@ -3,8 +3,8 @@ const btn = document.createElement("button");
 btn.textContent="Press me!";
 document.body.appendChild(btn);
 btn.addEventListener("click", function(){
-    //fetchData('http://swapi.dev/api/planets');
-    asyncData('http://swapi.dev/api/planets');
+    fetchData('http://swapi.dev/api/planets');
+    //asyncData('http://swapi.dev/api/planets');
 });
 
 // Création d'une div pour afficher les données de sortie qu'on veut : 
@@ -33,6 +33,7 @@ function fetchData(url) {
         const planets = data.results.map(function(item){
             //console.log(item);
             return {Nom: item.name, Films: item.films}
+
         })
         console.log(planets);
     })
@@ -54,8 +55,5 @@ async function asyncData(url) {
             asyncData(data.next);
         })
     }
-    const planets = data.results.map(function(item){
-        return {Nom: item.name, Films: item.films};
-    })
-    console.log(planets);
+    console.log(data);
 }

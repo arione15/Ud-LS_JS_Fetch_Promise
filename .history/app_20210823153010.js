@@ -55,7 +55,7 @@ async function asyncData(url) {
         })
     }
     const planets = data.results.map(function(item){
-        return {Nom: item.name, Films: item.films};
+        return {Nom: item.name, Films: item.films, Rotation: item.rotation_period};
     })
-    console.log(planets);
+    console.log(data);
 }
