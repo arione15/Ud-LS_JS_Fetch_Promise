@@ -38,9 +38,7 @@ function fetchAll(url, planets) {
                 })
                 resolve(arr);
             }
-        }).catch(function (error) {
-            console.log(error);
-        });
+        })
     });
 }
 

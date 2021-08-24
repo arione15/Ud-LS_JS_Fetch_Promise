@@ -8,20 +8,13 @@ btn.addEventListener("click", function () {
     fetchAll('http://swapi.dev/api/planets', []).then(function (planets) {
         //console.log(planets)
         outputPlanets(planets);
-    })//.catch(function(error){
-     //   console.log(error);
-    //});
+    });
 });
 
 // Créer la fonction fetchAll qui utilise Promise
 function fetchAll(url, planets) {
     return new Promise(function (resolve, reject) {
-        //throw "Uh-oh !";
         return fetch(url).then(function (rep) { //h. (NON ??) car il y a l'url de l'appli mais il y a aussi les url des # pages
-            console.log(rep);
-            if (rep.status !== 200) {
-                throw 'Uh-oh!';
-            }
             return rep.json();
         }).then(function (data) {
             planets = planets.concat(data.results);
@@ -38,9 +31,7 @@ function fetchAll(url, planets) {
                 })
                 resolve(arr);
             }
-        }).catch(function (error) {
-            console.log(error);
-        });
+        })
     });
 }
 
@@ -69,7 +60,7 @@ function outputPlanets(data) {
             }
         } else {
             let monSpan = document.createElement("span");
-            monSpan.textContent = ` ${element.Films.length} films trouvés !`;
+            monSpan.textContent = `${element.films.length} films trouvés !`;
             maDiv.appendChild(monSpan);
         }
     });
