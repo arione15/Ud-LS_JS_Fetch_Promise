@@ -17,12 +17,12 @@ function fetchAll(url, planets) {
         return fetch(url).then(function (rep) { //h. (NON ??) car il y a l'url de l'appli mais il y a aussi les url des # pages
             return rep.json();
         }).then(function (data) {
-            planets = planets.concat(data.results);
+            planets=planets.concat(data.results);
             //console.log(planets); // Ici on n'a pas encore atteint le resolve
-            if (data.next) {
+            if(data.next){
                 //console.log("Prochaine url : " + data.next);
-                fetchAll(data.next, planets).then(resolve);
-            } else {
+                fetchAll(data.next, planets).then(resolve); // Q : ce then n'est jamais atteint ?
+            }else{
                 let arr = planets.map(function (item) {
                     return {
                         Nom: item.name,
